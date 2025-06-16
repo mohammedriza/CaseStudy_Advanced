@@ -1,0 +1,17 @@
+package org.example.cucumber.webDriver;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class WebDriverInit {
+    private static WebDriver driver;
+
+    protected static WebDriver webDriver() {
+        if(driver == null) {
+            driver = new ChromeDriver();
+        }
+        return driver;
+    }
+
+}
