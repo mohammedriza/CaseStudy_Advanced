@@ -8,12 +8,11 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class InventoryPage extends WebDriverInit {
-    private By inventoryList = By.xpath("(//div[@id='inventory_container']/div[@data-test='inventory-list']/div)");
-    private By lnkShoppingCart = By.xpath("//div[@id='shopping_cart_container']/a");
-    private By btnCheckout = By.id("checkout");
+    private final By inventoryList = By.xpath("(//div[@id='inventory_container']/div[@data-test='inventory-list']/div)");
+    private final By lnkShoppingCart = By.xpath("//div[@id='shopping_cart_container']/a");
 
-    private String itemDescriptionXpath = "div[@data-test='inventory-item-description']//a/div";
-    private String itemAddToCartXpath = "div[@data-test='inventory-item-description']//button[contains(@id,'add-to-cart')]";
+    private final String itemDescriptionXpath = "div[@data-test='inventory-item-description']//a/div";
+    private final String itemAddToCartXpath = "div[@data-test='inventory-item-description']//button[contains(@id,'add-to-cart')]";
 
     private final CommonUtils commonUtils;
 
@@ -30,6 +29,7 @@ public class InventoryPage extends WebDriverInit {
                 item.findElement(By.xpath(itemAddToCartXpath)).click();
                 System.out.printf("\nItem added to shopping cart : " + itemName);
                 commonUtils.waitFor(2);
+                break;
             }
         }
     }
@@ -39,9 +39,6 @@ public class InventoryPage extends WebDriverInit {
         commonUtils.waitFor(2);
     }
 
-    public void clickCheckoutButton() {
-        commonUtils.click(btnCheckout);
-    }
 
 
 }

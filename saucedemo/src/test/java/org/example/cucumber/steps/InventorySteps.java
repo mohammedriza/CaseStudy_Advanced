@@ -24,6 +24,8 @@ public class InventorySteps extends InventoryPage {
 
     @And("I click on Shopping cart icon to goto checkout page")
     public void iClickOnShoppingCartIconToGotoCheckoutPage() {
-        super.clickCheckoutButton();
+        super.clickOnShoppingCartIcon();
     }
+
+
 }

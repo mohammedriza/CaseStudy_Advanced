@@ -1,14 +1,14 @@
 package org.example.model;
 
 import org.example.cucumber.webDriver.WebDriverInit;
-import org.junit.Assert;
+import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
 public class CommonUtils extends WebDriverInit {
-    public final String appUrl = "https://www.saucedemo.com/";
+    public static String appUrl; // Configured in Hooks
     public final String appUsername = "standard_user";
     public final String appPassword = "secret_sauce";
 

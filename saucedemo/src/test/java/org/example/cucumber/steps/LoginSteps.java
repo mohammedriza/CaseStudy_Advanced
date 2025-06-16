@@ -1,6 +1,7 @@
 package org.example.cucumber.steps;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.cucumber.pages.LoginPage;
 import org.example.model.CommonUtils;
@@ -21,5 +22,11 @@ public class LoginSteps extends LoginPage {
     @When("I login to the application using the app credentials")
     public void iLoginToTheApplicationUsingTheAppCredentials() {
         super.loginToSauceDemoApplication(commonUtils.appUsername, commonUtils.appPassword);
+    }
+
+    @Then("I close the browser")
+    public void iCloseTheBrowser() {
+        commonUtils.closeDriver();
+        commonUtils.quitDriver();
     }
 }

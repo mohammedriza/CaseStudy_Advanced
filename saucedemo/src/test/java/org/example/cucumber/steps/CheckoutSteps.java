@@ -35,5 +35,11 @@ public class CheckoutSteps extends CheckoutPage {
 
     @Then("I verify the checkout message is {string}")
     public void iVerifyTheCheckoutMessageIs(String checkoutMessage) {
+        super.assertCheckoutMessage(checkoutMessage);
+    }
+
+    @Then("I verify the error message in checkout page is {string}")
+    public void iVerifyTheErrorMessageInCheckoutPageIs(String checkoutWErrorMessage) {
+        super.validateCheckMissingInfoError(checkoutWErrorMessage);
     }
 }
