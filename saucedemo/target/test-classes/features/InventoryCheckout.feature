@@ -1,8 +1,9 @@
 Feature: InventoryCheckout
 
+  @Functional
   Scenario Outline: Add multiple products and checkout for thank you message
     Given I goto SauceDemo application
-    When I login to the application using the app credentials
+    When I login to the application using the credentials "<Username>" and "<Password>"
     Then I verify the application url contains "<inventoryUrl>"
     Then I add product "<productDescription1>" to shopping cart
     Then I add product "<productDescription2>" to shopping cart
@@ -14,12 +15,13 @@ Feature: InventoryCheckout
     Then I verify the application url contains "<checkoutUrl>"
     Then I verify the checkout message is "<checkoutMessage>"
     Examples:
-      | inventoryUrl | productDescription1 | productDescription2   | firstName | lastName | zipCode | checkoutUrl       | checkoutMessage           |
-      | inventory    | Sauce Labs Backpack | Sauce Labs Bike Light | Riza      | Mohamed  | 75023   | checkout-complete | Thank you for your order! |
+      | Username      | Password     | inventoryUrl | productDescription1 | productDescription2   | firstName | lastName | zipCode | checkoutUrl       | checkoutMessage           |
+      | standard_user | secret_sauce | inventory    | Sauce Labs Backpack | Sauce Labs Bike Light | Riza      | Mohamed  | 75023   | checkout-complete | Thank you for your order! |
 
+  @Functional
   Scenario Outline: Add multiple products and verify checkout message when checkout information is not provided
     Given I goto SauceDemo application
-    When I login to the application using the app credentials
+    When I login to the application using the credentials "<Username>" and "<Password>"
     Then I verify the application url contains "<inventoryUrl>"
     Then I add product "<productDescription1>" to shopping cart
     Then I add product "<productDescription2>" to shopping cart
@@ -30,5 +32,5 @@ Feature: InventoryCheckout
     Then I verify the error message in checkout page is "<checkoutErrorMessage>"
     Then I close the browser
     Examples:
-      | inventoryUrl | productDescription1 | productDescription2   | firstName | lastName | zipCode | checkoutErrorMessage          |
-      | inventory    | Sauce Labs Backpack | Sauce Labs Bike Light |           |          |         | Error: First Name is required |
+      | Username      | Password     | inventoryUrl | productDescription1 | productDescription2   | firstName | lastName | zipCode | checkoutErrorMessage          |
+      | standard_user | secret_sauce | inventory    | Sauce Labs Backpack | Sauce Labs Bike Light |           |          |         | Error: First Name is required |

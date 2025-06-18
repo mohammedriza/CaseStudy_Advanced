@@ -1,8 +1,8 @@
-package org.example.cucumber.steps.hooks;
+package cucumber.steps.hooks;
 
 import io.cucumber.java.Before;
-import org.example.cucumber.webDriver.WebDriverInit;
-import org.example.model.CommonUtils;
+import cucumber.webDriver.WebDriverInit;
+import model.CommonUtils;
 
 public class CucumberHooks extends WebDriverInit {
     @Before
