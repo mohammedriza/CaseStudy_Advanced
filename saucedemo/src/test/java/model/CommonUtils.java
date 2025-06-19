@@ -1,11 +1,17 @@
 package model;
 
 import cucumber.webDriver.WebDriverInit;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 
 public class CommonUtils extends WebDriverInit {
     public static String appUrl; // Configured in Hooks
@@ -55,5 +61,22 @@ public class CommonUtils extends WebDriverInit {
 
     public void closeDriver() {
         webDriver().close();
+    }
+
+    public void takeScreenshot() {
+        try {
+            File file = ((TakesScreenshot) webDriver()).getScreenshotAs(OutputType.FILE);
+
+            File destFile = new File("src/test/resources/screenshots/Screenshot_" + getUniqueValue() + ".png");
+            FileUtils.copyFile(file, destFile);
+        } catch (Exception e) {
+            System.out.println("ERROR: Failed to take screenshot");
+            ;
+        }
+    }
+
+    private String getUniqueValue() {
+        LocalDateTime datetime = LocalDateTime.now();
+        return datetime.getHour() + "_" + datetime.getMinute() + "_" + datetime.getSecond();
     }
 }
