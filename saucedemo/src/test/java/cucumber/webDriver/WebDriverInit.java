@@ -11,7 +11,7 @@ import java.util.Map;
 public class WebDriverInit {
     private static WebDriver driver;
 
-    protected static WebDriver webDriver() {
+    protected WebDriver webDriver() {
         if(driver == null) {
             ChromeOptions options = new ChromeOptions();
 
